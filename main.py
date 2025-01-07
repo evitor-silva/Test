@@ -77,10 +77,10 @@ else:
         except ValueError:
             print(i18n("\nError: The value you entered is not an integer. Please try again."))
         
-    themes = ''
-    viral_mode = True
+    viral_mode = input(i18n("Do you want viral mode? (yes/no): ")).lower() == 'yes' or 'y'
+    themes = input(i18n("Enter themes (comma-separated, leave blank if viral mode is True): ")) if not viral_mode else ''
     
-    tempo_minimo = 0 #int(input("Enter the minimum duration for segments (in seconds): "))
+    tempo_minimo = 15 #int(input("Enter the minimum duration for segments (in seconds): "))
     tempo_maximo = 90 #int(input("Enter the maximum duration for segments (in seconds): "))
 
     # Execute the pipeline
@@ -93,11 +93,11 @@ else:
     cut_segments.cut(viral_segments)
     edit_video.edit()
 
-    #if burn_subtitles_option:
-       # transcribe_cuts.transcribe()
-       # adjust_subtitles.adjust(base_color, base_size, h_size, highlight_color, palavras_por_bloco, limite_gap, modo, posicao_vertical, alinhamento, fonte, contorno, cor_da_sombra, negrito, italico, sublinhado, tachado, estilo_da_borda, espessura_do_contorno, tamanho_da_sombra)
-       # burn_subtitles.burn()
-    #else:
-     #   print(i18n("Subtitle burning skipped."))
+    if burn_subtitles_option:
+        transcribe_cuts.transcribe()
+        adjust_subtitles.adjust(base_color, base_size, h_size, highlight_color, palavras_por_bloco, limite_gap, modo, posicao_vertical, alinhamento, fonte, contorno, cor_da_sombra, negrito, italico, sublinhado, tachado, estilo_da_borda, espessura_do_contorno, tamanho_da_sombra)
+        burn_subtitles.burn()
+    else:
+        print(i18n("Subtitle burning skipped."))
 
     print(i18n("Process completed successfully!"))

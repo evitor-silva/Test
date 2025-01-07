@@ -1,9 +1,6 @@
-import json
 import subprocess
 import os
 import sys
-import wave
-from scripts.vosk_trascriber import Transcriber
 import torch
 import time
 
@@ -23,20 +20,27 @@ def transcribe(input_file, model='large-v3'):
         return srt_file
 
     # Verifica se há uma GPU disponível e define o tipo de processamento
+    if torch.cuda.is_available():
+        device = "cuda"
+        print("Placa de vídeo detectada, usando CUDA.")
+    else:
+        device = "cpu"
+        print("Nenhuma placa de vídeo detectada, usando CPU.")
+
+    command = [
+        "whisper",
+        input_file,
+        "--model", model,
+        "--task", "transcribe",
+        "--output_dir", output_folder,
+        "--output_format", "all",
+        "--device", device # Define o dispositivo baseado na verificação da GPU
+    ]
+
     try:
+        result = subprocess.run(command, check=True, capture_output=True, text=True)
         end_time = time.time()  # Tempo de término da transcrição
         elapsed_time = end_time - start_time  # Tempo total de execução
-        
-        audio_file = "tmp/input_video.mp4"
-        device = "cpu"
-        
-        model_path = "vosk-model-small-pt-0.3"
-        transcriber = Transcriber(model_path)
-
-        result = transcriber.transcribe(audio_file)
-
-        with open(srt_file, "w") as json_file:
-            json.dump(result, json_file, ensure_ascii=False, indent=4)
 
         # Cálculo de minutos e segundos
         minutes = int(elapsed_time // 60)

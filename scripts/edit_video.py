@@ -109,7 +109,7 @@ def edit():
                 final_dir = "final/"
                 os.makedirs(final_dir, exist_ok=True)
                 final_output = os.path.join(final_dir, f"final-output{str(index).zfill(3)}_processed.mp4")
-                command = f"ffmpeg -y -i {output_file} -i {audio_file} -c:v libx264 -preset fast -b:v 2M -c:a aac -b:a 192k -r {fps} {final_output}"
+                command = f"ffmpeg -y -i {output_file} -i {audio_file} -c:v h264_nvenc -preset fast -b:v 2M -c:a aac -b:a 192k -r {fps} {final_output}"
                 subprocess.call(command, shell=True)
                 print(f"Arquivo final gerado em: {final_output}")
             else:

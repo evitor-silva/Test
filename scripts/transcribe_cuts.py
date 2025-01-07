@@ -15,16 +15,11 @@ def transcribe():
             return
 
         command = [
-            "whisperx",
+            "whisper",
             input_file,
             "--model", model,
             "--task", "transcribe",
             "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H",
-            "--chunk_size", "10",
-            "--vad_onset", "0.4",
-            "--vad_offset", "0.3",
-            "--compute_type", "float32",
-            "--batch_size", "10",
             "--output_dir", output_folder,
             "--output_format", "srt",
             "--output_format", "json",
