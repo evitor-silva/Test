@@ -13,12 +13,8 @@ def cut(segments):
             return False
 
     def generate_segments(response):
-        if not check_nvenc_support():
-            print("NVENC is not supported on this system. Falling back to libx264.")
-            video_codec = "libx264"
-        else:
-            video_codec = "h264_nvenc"
-
+        video_codec = "libx264"
+      
         input_file = "tmp/input_video.mp4"
         if not os.path.exists(input_file):
             print(f"Input file not found: {input_file}")

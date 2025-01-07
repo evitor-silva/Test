@@ -36,7 +36,7 @@ def burn():
                     'ffmpeg',
                     '-i', os.path.join(videos_folder, video_file),  # Vídeo de entrada
                     '-vf', f"subtitles='{subtitle_file_ffmpeg}'",  # Filtro de legendas com caminho corrigido
-                    '-c:v', 'h264_nvenc',  # Codificador NVIDIA
+                    '-c:v', 'libx264',  # Codificador NVIDIA
                     '-preset', 'p1',  # Preset para velocidade
                     '-b:v', '5M',  # Bitrate
                     '-c:a', 'copy',  # Copia o áudio

@@ -19,7 +19,6 @@ def transcribe():
             input_file,
             "--model", model,
             "--task", "transcribe",
-            "--align_model", "WAV2VEC2_ASR_LARGE_LV60K_960H",
             "--output_dir", output_folder,
             "--output_format", "srt",
             "--output_format", "json",

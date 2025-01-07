@@ -3,7 +3,7 @@ import json
 def create(num_segments, viral_mode, themes, tempo_minimo, tempo_maximo):
     quantidade_de_virals = num_segments  # @param {type:"number"}
 
-    with open('tmp/input_video.tsv', 'r', encoding='utf-8') as f:
+    with open('tmp/input_video.srt', 'r') as f:
         content = f.read()
 
     system = f"You are a Viral Segment Identifier, an AI system that analyzes a video's transcript and predicts which segments might go viral on social media platforms. You use factors such as emotional impact, humor, unexpected content, and relevance to current trends to make your predictions. You return a structured text document detailing the start and end times, the description, the duration, and a viral score for the potential viral segments."
