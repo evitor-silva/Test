@@ -23,7 +23,7 @@ class Transcriber:
             "start_time": str(timedelta(seconds=start)).split(".")[0].zfill(8), 
             "end_time": str(timedelta(seconds=end)).split(".")[0].zfill(8), 
             "description": data["text"],
-            "duration": str(end - start),
+            "duration": str(round(end - start)),
         }
 
     def transcribe(self, filename):
