@@ -5,19 +5,9 @@ import os
     
 def cut(segments):
 
-    def check_nvenc_support():
-        try:
-            result = subprocess.run(["ffmpeg", "-encoders"], capture_output=True, text=True)
-            return "h264_nvenc" in result.stdout
-        except subprocess.CalledProcessError:
-            return False
-
     def generate_segments(response):
-        if not check_nvenc_support():
-            print("NVENC is not supported on this system. Falling back to libx264.")
-            video_codec = "libx264"
-        else:
-            video_codec = "h264_nvenc"
+  
+        video_codec = "libx264"
 
         input_file = "tmp/input_video.mp4"
         if not os.path.exists(input_file):
@@ -41,16 +31,9 @@ def cut(segments):
                 "-c:v", video_codec
             ]
 
-            if video_codec == "h264_nvenc":
-                command.extend([
-                    "-preset", "p1",  # Fast encoding preset for NVENC
-                    "-b:v", "5M",     # Set bitrate instead of CRF for NVENC
-                ])
-            else:
-                command.extend([
-                    "-preset", "ultrafast",
-                    "-crf", "23"
-                ])
+            command.extend([
+                "-crf", "23"
+            ])
 
             command.extend([
                 "-c:a", "aac",

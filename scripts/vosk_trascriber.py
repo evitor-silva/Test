@@ -34,7 +34,7 @@ class Transcriber():
             "start_time": Transcriber.seconds_to_hms(start), 
             "end_time": Transcriber.seconds_to_hms(end), 
             "description": data["text"],
-            "duration": 0,
+            "duration": Transcriber.seconds_to_hms(end-start),
             "score": 0 ,
         }
         
