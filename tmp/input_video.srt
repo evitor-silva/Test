@@ -1,0 +1,94 @@
+{
+    "segments": [
+        {
+            "start_time": "00:00:00",
+            "end_time": "00:00:07",
+            "description": " Voc�s sabem que um dos caras que eu mais admiro, que eu trato, tipo assim, como �dolo mesmo, que eu sou f� pra caralho, � o Neymar, mano.",
+            "duration": "8"
+        },
+        {
+            "start_time": "00:00:08",
+            "end_time": "00:00:08",
+            "description": " T� ligado?",
+            "duration": "0"
+        },
+        {
+            "start_time": "00:00:09",
+            "end_time": "00:00:12",
+            "description": " E, porra, chegou no n�vel do cara me chamar no WhatsApp, mano.",
+            "duration": "3"
+        },
+        {
+            "start_time": "00:00:13",
+            "end_time": "00:00:18",
+            "description": " Chegou no n�vel do cara me chamar no WhatsApp, mandar v�deo meu e falar, e a�, beijoqueiro?",
+            "duration": "5"
+        },
+        {
+            "start_time": "00:00:19",
+            "end_time": "00:00:24",
+            "description": " Tipo assim, viado, voc�s est�o manchando a minha imagem pra um cara que eu trato como �dolo, mano.",
+            "duration": "5"
+        },
+        {
+            "start_time": "00:00:25",
+            "end_time": "00:00:25",
+            "description": " T� ligado?",
+            "duration": "0"
+        },
+        {
+            "start_time": "00:00:26",
+            "end_time": "00:00:27",
+            "description": " Voc�s est�o rindo, n�, viado?",
+            "duration": "1"
+        },
+        {
+            "start_time": "00:00:30",
+            "end_time": "00:00:30",
+            "description": " Voc�s est�o rindo, n�?",
+            "duration": "1"
+        },
+        {
+            "start_time": "00:00:32",
+            "end_time": "00:00:34",
+            "description": " Eu trato o cara como �dolo, irm�o.",
+            "duration": "2"
+        },
+        {
+            "start_time": "00:00:35",
+            "end_time": "00:00:40",
+            "description": " E eu acordar, eu vi uma notifica��o do cara e eu, caralho, o Neymar me mandou mensagem.",
+            "duration": "5"
+        },
+        {
+            "start_time": "00:00:40",
+            "end_time": "00:00:46",
+            "description": " A� eu abro um v�deo de intelig�ncia artificial falando, e a�, beijoqueiro?",
+            "duration": "6"
+        },
+        {
+            "start_time": "00:00:46",
+            "end_time": "00:00:48",
+            "description": " Tipo assim, acabou com o meu dia j�, irm�o.",
+            "duration": "2"
+        },
+        {
+            "start_time": "00:00:50",
+            "end_time": "00:00:53",
+            "description": " Voc�s v�o ficar rindo, velho, n�o d� n�o, papo reto, velho.",
+            "duration": "3"
+        },
+        {
+            "start_time": "00:00:54",
+            "end_time": "00:00:56",
+            "description": " S� tem doente, mano.",
+            "duration": "1"
+        },
+        {
+            "start_time": "00:00:56",
+            "end_time": "00:00:58",
+            "description": " Os caras est�o levando na zoeira o maluco que eu t� falando s�rio, mano.",
+            "duration": "2"
+        },
+    ]
+}

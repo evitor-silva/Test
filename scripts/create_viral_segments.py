@@ -30,7 +30,15 @@ def create(num_segments, viral_mode, themes, tempo_minimo, tempo_maximo):
     for chunk in chunks:
         sentiment_score = analyze_sentiment(chunk)
         if sentiment_score > 0.5:  # Ajuste o valor conforme necessário
-            best_moments.append(chunk)
+            best_moments.append({
+                "chunk": chunk,
+                "sentiment_score": sentiment_score
+            })
+
+    # Organizar em 'num_segments' segmentos ou baseados no 'tempo_minimo' e 'tempo_maximo'
+    best_moments = sorted(best_moments, key=lambda x: x['sentiment_score'], reverse=True)
+    selected_moments = best_moments[:num_segments]
 
     # Imprimir os melhores momentos
-    print(json.dumps(best_moments, indent=4))
+    print(json.dumps(selected_moments, indent=4))
+
