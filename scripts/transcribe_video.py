@@ -29,7 +29,7 @@ def transcribe(input_file, model='large-v3'):
         device = "cpu"
         print("Nenhuma placa de vídeo detectada, usando CPU.")
     
-    whisper = Transcriber('turbo')
+    whisper = Transcriber('large-v2')
     transcribeW = whisper.transcribe(input_file)
     
     with open(srt_file, "w") as json_file:
@@ -46,7 +46,6 @@ def transcribe(input_file, model='large-v3'):
 
         print(f"Transcrição concluída. Saída salva em {srt_file}.")
         print(f"Levou {minutes} minutos e {seconds} segundos para transcrever usando {device}.")  # Mostra o tempo e o dispositivo
-        print(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Erro durante a transcrição: {e}")
         print(f"Saída de erro: {e.stderr}")
