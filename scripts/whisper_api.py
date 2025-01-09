@@ -33,8 +33,20 @@ class Transcriber:
         transcription = []
         start_time = datetime.now()
 
-        # Transcribe using the loaded model
-        result = self.model.transcribe(filename)
+
+        audio = whisper.load_audio(filename)
+        audio = whisper.pad_or_trim(audio)
+
+        # make log-Mel spectrogram and move to the same device as the model
+        mel = whisper.log_mel_spectrogram(audio, n_mels=self.model.dims.n_mels).to(self.model.device)
+
+        # detect the spoken language
+        _, probs = self.model.detect_language(mel)
+        print(f"Detected language: {max(probs, key=probs.get)}")
+
+        # decode the audio
+        options = whisper.DecodingOptions()
+        result = whisper.decode(self.model, mel, options)
 
         # Format the transcription results
         for item in result['segments']:

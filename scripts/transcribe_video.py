@@ -29,7 +29,7 @@ def transcribe(input_file, model='large-v3'):
         device = "cpu"
         print("Nenhuma placa de vídeo detectada, usando CPU.")
     
-    whisper = Transcriber('large-v2')
+    whisper = Transcriber('turbo')
     transcribeW = whisper.transcribe(input_file)
     
     with open(srt_file, "w") as json_file:
