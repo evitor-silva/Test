@@ -47,6 +47,8 @@ class Transcriber:
         # decode the audio
         options = whisper.DecodingOptions()
         result = whisper.decode(self.model, mel, options)
+        
+        print(result)
 
         # Format the transcription results
         for item in result['segments']:
