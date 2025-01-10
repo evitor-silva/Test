@@ -1,10 +1,8 @@
-import json
 import subprocess
 import os
 import sys
 import torch
 import time
-from scripts.whisper_api import Transcriber
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -28,15 +26,19 @@ def transcribe(input_file, model='large-v3'):
     else:
         device = "cpu"
         print("Nenhuma placa de vídeo detectada, usando CPU.")
-    
-    whisper = Transcriber('turbo')
-    transcribeW = whisper.transcribe(input_file)
-    
-    with open(srt_file, "w") as json_file:
-        json.dump(transcribeW, json_file, ensure_ascii=False, indent=4)
-    
+
+    command = [
+        "whisper",
+        input_file,
+        "--model", model,
+        "--task", "transcribe",
+        "--output_dir", output_folder,
+        "--output_format", "all",
+        "--device", device # Define o dispositivo baseado na verificação da GPU
+    ]
+
     try:
-        #result = subprocess.run(command, check=True, capture_output=True, text=True)
+        result = subprocess.run(command, check=True, capture_output=True, text=True)
         end_time = time.time()  # Tempo de término da transcrição
         elapsed_time = end_time - start_time  # Tempo total de execução
 
@@ -46,6 +48,7 @@ def transcribe(input_file, model='large-v3'):
 
         print(f"Transcrição concluída. Saída salva em {srt_file}.")
         print(f"Levou {minutes} minutos e {seconds} segundos para transcrever usando {device}.")  # Mostra o tempo e o dispositivo
+        print(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Erro durante a transcrição: {e}")
         print(f"Saída de erro: {e.stderr}")

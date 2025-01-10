@@ -78,7 +78,6 @@ else:
             print(i18n("\nError: The value you entered is not an integer. Please try again."))
         
     viral_mode = input(i18n("Do you want viral mode? (yes/no): ")).lower() == 'yes' or 'y'
-    
     themes = input(i18n("Enter themes (comma-separated, leave blank if viral mode is True): ")) if not viral_mode else ''
     
     tempo_minimo = 15 #int(input("Enter the minimum duration for segments (in seconds): "))
